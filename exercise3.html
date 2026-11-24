@@ -1,1 +1,46 @@
-   <!-- Write your code here -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 3</title>
+    <style>
+      #circleContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="createBtn">Create Circle</button>
+    <div id="circleContainer"></div>
+    <script>
+      const createBtn = document.getElementById("createBtn");
+      const circleContainer = document.getElementById("circleContainer");
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      createBtn.addEventListener("click", () => {
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
+        circle.style.backgroundColor = getRandomColor();
+        circle.addEventListener("click", () => {
+          circle.remove();
+        });
+        circleContainer.appendChild(circle);
+      });
+    </script>
+  </body>
+</html>
